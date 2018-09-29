@@ -77,8 +77,26 @@ public class Grain {
 	public void setAdditionTime(GrainAdditionTime addTime) {
 		this.addTime = addTime;
 	}
+	
+	/**
+	 * Get the color in Lovibond.
+	 * @return The color in Lovibond.
+	 */
+	@Column(name="lovi")
+	public float getLovibond() {
+		return lovi;
+	}
+
+	/**
+	 * Set the color in Lovibond.
+	 * @param lovi The color in Lovibond.
+	 */
+	public void setLovibond(final float lovi) {
+		this.lovi = lovi;
+	}
 
 	private String name;
 	private int id;
 	private GrainAdditionTime addTime;
+	private float lovi;
 }
