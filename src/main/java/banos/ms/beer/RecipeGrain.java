@@ -36,6 +36,7 @@ public class RecipeGrain {
 	 */
 	@Column(name="amount_unit")
 	public String getAmountUnit() {
+		// TODO: needs to be an enum
 		return amountUnit;
 	}
 	
