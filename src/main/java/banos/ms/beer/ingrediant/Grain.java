@@ -4,13 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import banos.ms.beer.GrainAdditionTime;
+import banos.ms.beer.IngrediantAdditionStep;
 
 /**
  * [Author]			Mike Banos
@@ -61,24 +59,6 @@ public class Grain {
 	}
 	
 	/**
-	 * Get the grain addition time.
-	 * @return The addition time.
-	 */
-	@OneToOne
-	@JoinColumn(name="grain_add_time_id")
-	public GrainAdditionTime getAdditionTime() {
-		return addTime;
-	}
-
-	/**
-	 * Set the grain addition time.
-	 * @param addTime The addition time.
-	 */
-	public void setAdditionTime(GrainAdditionTime addTime) {
-		this.addTime = addTime;
-	}
-	
-	/**
 	 * Get the color in Lovibond.
 	 * @return The color in Lovibond.
 	 */
@@ -94,9 +74,26 @@ public class Grain {
 	public void setLovibond(final float lovi) {
 		this.lovi = lovi;
 	}
+	
+	/**
+	 * Get the addition step.
+	 * @return The addition step.
+	 */
+	@Column(name="add_step")
+	public IngrediantAdditionStep getAdditionStep() {
+		return addStep;
+	}
+
+	/**
+	 * Set the addition step.
+	 * @param step The addition step.
+	 */
+	public void setAdditionStep(IngrediantAdditionStep step) {
+		this.addStep = step;
+	}
 
 	private String name;
 	private int id;
-	private GrainAdditionTime addTime;
 	private float lovi;
+	private IngrediantAdditionStep addStep;
 }
