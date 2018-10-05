@@ -10,7 +10,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * [Author]			Mike Banos
@@ -21,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name="yeast_strain")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@yeastid")
 public class Yeast {
 	/**
 	 * Default ctor.
@@ -66,7 +68,6 @@ public class Yeast {
 	 */
 	@ManyToOne
 	@JoinColumn(name="yeast_brand_id")
-	@JsonIgnore
 	public YeastBrand getBrand() {
 		return brand;
 	}
