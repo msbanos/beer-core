@@ -71,7 +71,6 @@ public class YeastBrand {
 	 * @return The list of strains
 	 */
 	@OneToMany(mappedBy="brand", cascade=CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)
 	public List<Yeast> getStrains() {
 		return strains;
 	}
