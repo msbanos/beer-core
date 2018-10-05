@@ -4,9 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * [Author]			Mike Banos
@@ -57,20 +61,22 @@ public class Yeast {
 	}
 	
 	/**
-	 * Get the brand id.
-	 * @return The brand id.
+	 * Get the brand.
+	 * @return The brand.
 	 */
-	@Column(name="yeast_brand_id")
-	public int getBrandId() {
-		return brandId;
+	@ManyToOne
+	@JoinColumn(name="yeast_brand_id")
+	@JsonIgnore
+	public YeastBrand getBrand() {
+		return brand;
 	}
 
 	/**
-	 * Set the brand id.
-	 * @param name The brand id.
+	 * Set the brand.
+	 * @param name The brand.
 	 */
-	public void setBrandId(final int brandId) {
-		this.brandId = brandId;
+	public void setBrand(final YeastBrand brand) {
+		this.brand = brand;
 	}
 	
 	/**
@@ -91,5 +97,6 @@ public class Yeast {
 	}
 	
 	private String name, strainId;
-	private int id, brandId;
+	private int id;
+	private YeastBrand brand;
 }
