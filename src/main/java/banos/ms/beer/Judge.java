@@ -128,7 +128,7 @@ public class Judge {
 	 * @return The brewery name.
 	 */
 	@Column(name="brewery")
-	public String getBrewerName() {
+	public String getBreweryName() {
 		return brewery;
 	}
 
@@ -136,7 +136,7 @@ public class Judge {
 	 * Set the brewery name.
 	 * @param name The brewery name.
 	 */
-	public void setBrewerName(final String name) {
+	public void setBreweryName(final String name) {
 		this.brewery = name;
 	}
 	
