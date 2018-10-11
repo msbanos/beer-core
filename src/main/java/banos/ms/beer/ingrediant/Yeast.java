@@ -102,7 +102,7 @@ public class Yeast {
 	 * @return True if a blowoff tube should be used; otherwise false.
 	 */
 	@Column(name="blowoff")
-	public boolean useBlowoff() {
+	public boolean getUseBlowoff() {
 		return blowoff;
 	}
 	
