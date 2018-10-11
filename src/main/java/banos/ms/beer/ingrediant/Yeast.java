@@ -97,7 +97,25 @@ public class Yeast {
 		this.strainId = strainId;
 	}
 	
+	/**
+	 * Check if a blowoff tube should be used with this strain.
+	 * @return True if a blowoff tube should be used; otherwise false.
+	 */
+	@Column(name="blowoff")
+	public boolean useBlowoff() {
+		return blowoff;
+	}
+	
+	/**
+	 * Set whether or not a blowoff tube should be used with this strain.
+	 * @param blowoff True if a blowoff tube should be used; otherwise false.
+	 */
+	public void setUseBlowoff(final boolean blowoff) {
+		this.blowoff = blowoff;
+	}
+	
 	private String name, strainId;
 	private int id;
 	private YeastBrand brand;
+	private boolean blowoff;
 }
