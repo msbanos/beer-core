@@ -4,9 +4,16 @@ import java.time.LocalDate;
 import java.util.Map;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
+import javax.persistence.MapKeyEnumerated;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -50,6 +57,7 @@ public class ScoreSheet {
 	 * Get the name of the competition.
 	 * @return The competition name.
 	 */
+	@Column(name="comp_name")
 	public String getCompetitionName() {
 		return compName;
 	}
@@ -66,6 +74,7 @@ public class ScoreSheet {
 	 * Get the location of the competition.
 	 * @return The competition location.
 	 */
+	@Column(name="comp_loc")
 	public String getCompetitionLocation() {
 		return compLoc;
 	}
@@ -82,6 +91,7 @@ public class ScoreSheet {
 	 * Get the competition date.
 	 * @return The competition date.
 	 */
+	@Column(name="comp_date")
 	public LocalDate getCompetitionDate() {
 		return compDate;
 	}
@@ -98,6 +108,8 @@ public class ScoreSheet {
 	 * Get the judge.
 	 * @return The judge.
 	 */
+	@OneToOne
+	@JoinColumn(name="judge_id")
 	public Judge getJudge() {
 		return judge;
 	}
@@ -114,6 +126,7 @@ public class ScoreSheet {
 	 * Get the position of the sample in the flight.
 	 * @return The flight position.
 	 */
+	@Column(name="flight_pos")
 	public int getFlightPosition() {
 		return flightPos;
 	}
@@ -130,6 +143,7 @@ public class ScoreSheet {
 	 * Get the total number of samples in the flight.
 	 * @return The flight sample count.
 	 */
+	@Column(name="flight_count")
 	public int getFlightCount() {
 		return flightCount;
 	}
@@ -146,6 +160,7 @@ public class ScoreSheet {
 	 * Get if the sample advanced to the mini Best of Show.
 	 * @return True if the sample advanced to the mini-BOS; otherwise false.
 	 */
+	@Column(name="in_bos")
 	public boolean getInBOS() {
 		return bos;
 	}
@@ -162,6 +177,7 @@ public class ScoreSheet {
 	 * Get the mini Best of Show placement.
 	 * @return The min-BOS place.
 	 */
+	@Column(name="bos_place")
 	public Integer getBOSPlace() {
 		return bosPlace;
 	}
@@ -178,6 +194,7 @@ public class ScoreSheet {
 	 * Get the consensus score.
 	 * @return The consensus score.
 	 */
+	@Column(name="consensus_score")
 	public int getConsensusScore() {
 		return consensus;
 	}
@@ -194,6 +211,7 @@ public class ScoreSheet {
 	 * Get if the bottle was deemed OK.
 	 * @return True if the OK box was checked; otherwise false.
 	 */
+	@Column(name="bottle_ok")
 	public boolean getBottleOK() {
 		return bottleOk;
 	}
@@ -210,6 +228,7 @@ public class ScoreSheet {
 	 * Get the bottle comment.
 	 * @return The bottle comment.
 	 */
+	@Column(name="bottle_comment")
 	public String getBottleComment() {
 		return bottleComment;
 	}
@@ -226,6 +245,9 @@ public class ScoreSheet {
 	 * Get the mapping of flaw to level.
 	 * @return The flaw mapping.
 	 */
+	@ElementCollection
+	@MapKeyColumn(name="flaw")
+	@MapKeyEnumerated(EnumType.STRING)
 	public Map<Flaw, FlawLevel> getFlaws() {
 		return flaws;
 	}
@@ -242,6 +264,7 @@ public class ScoreSheet {
 	 * Get the judge's feedback.
 	 * @return The feedback.
 	 */
+	@Column(name="feedback")
 	public String getFeedback() {
 		return feedback;
 	}
@@ -258,6 +281,7 @@ public class ScoreSheet {
 	 * Get the judge's total score.
 	 * @return The total score.
 	 */
+	@Column(name="judge_total")
 	public int getJudgeTotal() {
 		return total;
 	}
@@ -274,6 +298,7 @@ public class ScoreSheet {
 	 * Get the aroma score.
 	 * @return The score.
 	 */
+	@Column(name="aroma_score")
 	public int getAromaScore() {
 		return aromaScore;
 	}
@@ -290,6 +315,7 @@ public class ScoreSheet {
 	 * Get the appearance score.
 	 * @return The score.
 	 */
+	@Column(name="app_score")
 	public int getAppearanceScore() {
 		return appScore;
 	}
@@ -306,6 +332,7 @@ public class ScoreSheet {
 	 * Get the flavor score.
 	 * @return The score.
 	 */
+	@Column(name="flavor_score")
 	public int getFlavorScore() {
 		return flavorScore;
 	}
@@ -322,6 +349,7 @@ public class ScoreSheet {
 	 * Get the mouthfeel score.
 	 * @return The score.
 	 */
+	@Column(name="mf_score")
 	public int getMouthfeelScore() {
 		return mfScore;
 	}
@@ -338,6 +366,7 @@ public class ScoreSheet {
 	 * Get the overall score.
 	 * @return The score.
 	 */
+	@Column(name="overall_score")
 	public int getOverallScore() {
 		return overallScore;
 	}
@@ -354,6 +383,7 @@ public class ScoreSheet {
 	 * Get the "aroma - other" comment.
 	 * @return The "other" comment.
 	 */
+	@Column(name="aroma_other")
 	public String getAromaOther() {
 		return aromaOther;
 	}
@@ -370,6 +400,7 @@ public class ScoreSheet {
 	 * Get the "appearance - other" comment.
 	 * @return The "other" comment.
 	 */
+	@Column(name="app_other")
 	public String getAppearanceOther() {
 		return appOther;
 	}
@@ -386,6 +417,7 @@ public class ScoreSheet {
 	 * Get the "appearance - texture" comment.
 	 * @return The "other" comment.
 	 */
+	@Column(name="app_texture")
 	public String getAppearanceTexture() {
 		return appTexture;
 	}
@@ -402,6 +434,7 @@ public class ScoreSheet {
 	 * Get the "flavor - other" comment.
 	 * @return The "other" comment.
 	 */
+	@Column(name="flav_other")
 	public String getFlavorOther() {
 		return flavorOther;
 	}
@@ -418,6 +451,7 @@ public class ScoreSheet {
 	 * Get the "mouthfeel - other" comment.
 	 * @return The "other" comment.
 	 */
+	@Column(name="other")
 	public String getMouthfeelOther() {
 		return mfOther;
 	}
@@ -434,6 +468,7 @@ public class ScoreSheet {
 	 * Get the overall style rating (0="Classic Example" - 4="Not to Style").
 	 * @return The style rating.
 	 */
+	@Column(name="style_overall")
 	public int getOverallStyle() {
 		return overallStyle;
 	}
@@ -450,6 +485,7 @@ public class ScoreSheet {
 	 * Set the overall impression rating (0="Wonderful" - 4="Lifeless").
 	 * @return The impression rating.
 	 */
+	@Column(name="impr_overall")
 	public int getOverallImpression() {
 		return overallImpression;
 	}
@@ -466,6 +502,7 @@ public class ScoreSheet {
 	 * Get the overall flaws rating (0="Flawless" - 4="Significant Flaws").
 	 * @return The flaws rating.
 	 */
+	@Column(name="flaws_overall")
 	public int getOverallFlaws() {
 		return overallFlaws;
 	}
@@ -482,6 +519,8 @@ public class ScoreSheet {
 	 * Get the perceived malt aroma level.
 	 * @return The malt level.
 	 */
+	@Column(name="malt_aroma_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getMaltAromaLevel() {
 		return maltAromaLevel;
 	}
@@ -498,6 +537,7 @@ public class ScoreSheet {
 	 * Get whether the malt aroma level was inappropriate.
 	 * @return True if the level was inappropriate; otherwise false.
 	 */
+	@Column(name="ma_inappr")
 	public boolean getMaltAromaInappropriate() {
 		return maltAromaInapp;
 	}
@@ -514,6 +554,7 @@ public class ScoreSheet {
 	 * Get the malt aroma comment.
 	 * @return The comment.
 	 */
+	@Column(name="ma_comment")
 	public String getMaltAromaComment() {
 		return maltAromaComment;
 	}
@@ -530,6 +571,8 @@ public class ScoreSheet {
 	 * Get the perceived hop aroma level.
 	 * @return The aroma level.
 	 */
+	@Column(name="hop_aroma_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getHopAromaLevel() {
 		return hopAromaLevel;
 	}
@@ -546,6 +589,7 @@ public class ScoreSheet {
 	 * Get whether the hop aroma level was inappropriate.
 	 * @return True if the level was inappropriate; otherwise false.
 	 */
+	@Column(name="ha_inappr")
 	public boolean getHopAromaInappropriate() {
 		return hopAromaInapp;
 	}
@@ -562,6 +606,7 @@ public class ScoreSheet {
 	 * Get the hop aroma comment.
 	 * @return The comment.
 	 */
+	@Column(name="ha_comment")
 	public String getHopAromaComment() {
 		return hopAromaComment;
 	}
@@ -578,6 +623,8 @@ public class ScoreSheet {
 	 * Get the perceived fermentation aroma level.
 	 * @return The aroma level.
 	 */
+	@Column(name="ferm_aroma_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getFermentationAromaLevel() {
 		return fermAromaLevel;
 	}
@@ -594,6 +641,7 @@ public class ScoreSheet {
 	 * Get whether the fermentation aroma level was inappropriate.
 	 * @return True if the level was inappropriate; otherwise false.
 	 */
+	@Column(name="fa_inappr")
 	public boolean getFermentationAromaInappropriate() {
 		return fermAromaInapp;
 	}
@@ -610,6 +658,7 @@ public class ScoreSheet {
 	 * Get the fermentation aroma comment.
 	 * @return The comment.
 	 */
+	@Column(name="fa_comment")
 	public String getFermentationAromaComment() {
 		return fermAromaComment;
 	}
@@ -626,6 +675,8 @@ public class ScoreSheet {
 	 * Get the beer color.
 	 * @return The color.
 	 */
+	@Column(name="beer_color")
+	@Enumerated(EnumType.STRING)
 	public BeerColor getBeerColor() {
 		return bColor;
 	}
@@ -642,6 +693,7 @@ public class ScoreSheet {
 	 * Get whether the beer color was inappropriate.
 	 * @return True if the color was inappropriate; otherwise false.
 	 */
+	@Column(name="bc_inappr")
 	public boolean getBeerColorInappropriate() {
 		return bColorInapp;
 	}
@@ -658,6 +710,8 @@ public class ScoreSheet {
 	 * Get the head color.
 	 * @return The color.
 	 */
+	@Column(name="head_color")
+	@Enumerated(EnumType.STRING)
 	public HeadColor getHeadColor() {
 		return hColor;
 	}
@@ -674,6 +728,7 @@ public class ScoreSheet {
 	 * Get whether the head color was inappropriate.
 	 * @return True if the color was inappropriate; otherwise false.
 	 */
+	@Column(name="hc_inappr")
 	public boolean getHeadColorInappropriate() {
 		return hColorInapp;
 	}
@@ -690,6 +745,8 @@ public class ScoreSheet {
 	 * Get the clarity.
 	 * @return The clarity.
 	 */
+	@Column(name="clarity")
+	@Enumerated(EnumType.STRING)
 	public Clarity getClarity() {
 		return clarity;
 	}
@@ -706,6 +763,7 @@ public class ScoreSheet {
 	 * Get whether the clarity was inappropriate.
 	 * @return True if the clarity was inappropriate; otherwise false.
 	 */
+	@Column(name="clar_inappr")
 	public boolean getClarityInappropriate() {
 		return clarityInapp;
 	}
@@ -722,7 +780,9 @@ public class ScoreSheet {
 	 * Get the head retention.
 	 * @return The retention.
 	 */
-	public HeadRetention getRetention() {
+	@Column(name="retention")
+	@Enumerated(EnumType.STRING)
+	public HeadRetention getHeadRetention() {
 		return retention;
 	}
 	
@@ -738,6 +798,7 @@ public class ScoreSheet {
 	 * Get whether the head retention was inappropriate.
 	 * @return True if the retention was inappropriate; otherwise false.
 	 */
+	@Column(name="hret_inappr")
 	public boolean getRetentionInappropriate() {
 		return retInapp;
 	}
@@ -754,6 +815,8 @@ public class ScoreSheet {
 	 * Get the perceived malt flavor level.
 	 * @return The flavor level.
 	 */
+	@Column(name="malt_flav_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getMaltFlavorLevel() {
 		return maltFlavorLevel;
 	}
@@ -770,6 +833,7 @@ public class ScoreSheet {
 	 * Get whether the malt flavor was inappropriate.
 	 * @return True if the flavor was inappropriate; otherwise false.
 	 */
+	@Column(name="mf_inappr")
 	public boolean getMaltFlavorInappropriate() {
 		return maltFlavorInapp;
 	}
@@ -786,6 +850,7 @@ public class ScoreSheet {
 	 * Get the malt flavor comment.
 	 * @return The flavor comment.
 	 */
+	@Column(name="mf_comment")
 	public String getMaltFlavorComment() {
 		return maltFlavorComment;
 	}
@@ -802,6 +867,8 @@ public class ScoreSheet {
 	 * Get the perceived hop flavor level.
 	 * @return The flavor level.
 	 */
+	@Column(name="hop_flav_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getHopFlavorLevel() {
 		return hopFlavorLevel;
 	}
@@ -818,6 +885,7 @@ public class ScoreSheet {
 	 * Get whether the hop flavor was inappropriate.
 	 * @return True if the flavor was inappropriate; otherwise false.
 	 */
+	@Column(name="hflav_inappr")
 	public boolean getHopFlavorInappropriate() {
 		return hopFlavorInapp;
 	}
@@ -834,6 +902,7 @@ public class ScoreSheet {
 	 * Get the hop flavor comment.
 	 * @return The flavor comment.
 	 */
+	@Column(name="hflav_comment")
 	public String getHopFlavorComment() {
 		return hopFlavorComment;
 	}
@@ -850,6 +919,8 @@ public class ScoreSheet {
 	 * Get the perceived bitterness flavor level.
 	 * @return The flavor level.
 	 */
+	@Column(name="bit_flav_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getBitternessFlavorLevel() {
 		return bitFlavorLevel;
 	}
@@ -866,6 +937,7 @@ public class ScoreSheet {
 	 * Get whether the bitterness flavor was inappropriate.
 	 * @return True if the flavor was inappropriate; otherwise false.
 	 */
+	@Column(name="bitflav_inappr")
 	public boolean getBitternessFlavorInappropriate() {
 		return bitFlavorInapp;
 	}
@@ -882,6 +954,7 @@ public class ScoreSheet {
 	 * Get the bitterness flavor comment.
 	 * @return The flavor comment.
 	 */
+	@Column(name="bitflav_comment")
 	public String getBitternessFlavorComment() {
 		return bitFlavorComment;
 	}
@@ -898,6 +971,8 @@ public class ScoreSheet {
 	 * Get the perceived fermentation flavor level.
 	 * @return The flavor level.
 	 */
+	@Column(name="ferm_flav_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getFermentationFlavorLevel() {
 		return fermFlavorLevel;
 	}
@@ -914,6 +989,7 @@ public class ScoreSheet {
 	 * Get whether the fermentation flavor was inappropriate.
 	 * @return True if the flavor was inappropriate; otherwise false.
 	 */
+	@Column(name="ferm_flav_inappr")
 	public boolean getFermentationFlavorInappropriate() {
 		return fermFlavorInapp;
 	}
@@ -930,6 +1006,7 @@ public class ScoreSheet {
 	 * Get the fermentation flavor comment.
 	 * @return The flavor comment.
 	 */
+	@Column(name="ferm_flav_comment")
 	public String getFermentationFlavorComment() {
 		return fermFlavorComment;
 	}
@@ -946,6 +1023,8 @@ public class ScoreSheet {
 	 * Get the flavor balance.
 	 * @return The balance.
 	 */
+	@Column(name="flav_balance")
+	@Enumerated(EnumType.STRING)
 	public FlavorBalance getBalance() {
 		return balance;
 	}
@@ -962,6 +1041,7 @@ public class ScoreSheet {
 	 * Get whether the flavor balance was inappropriate.
 	 * @return True if the balance was inappropriate; otherwise false.
 	 */
+	@Column(name="bal_inappr")
 	public boolean getBalanceInappropriate() {
 		return balInapp;
 	}
@@ -978,6 +1058,7 @@ public class ScoreSheet {
 	 * Get the flavor balance comment.
 	 * @return The balance comment.
 	 */
+	@Column(name="flav_bal_comment")
 	public String getFlavorBalanceComment() {
 		return balComment;
 	}
@@ -994,6 +1075,8 @@ public class ScoreSheet {
 	 * Get the flavor finish.
 	 * @return The finish.
 	 */
+	@Column(name="beer_finish")
+	@Enumerated(EnumType.STRING)
 	public BeerFinish getFinish() {
 		return finish;
 	}
@@ -1010,6 +1093,7 @@ public class ScoreSheet {
 	 * Get whether the finish was inappropriate.
 	 * @return True if the finish was inappropriate; otherwise false.
 	 */
+	@Column(name="finish_inappr")
 	public boolean getFinishInappropriate() {
 		return flavInapp;
 	}
@@ -1026,6 +1110,7 @@ public class ScoreSheet {
 	 * Get the finish comment.
 	 * @return The finish comment.
 	 */
+	@Column(name="finish_comment")
 	public String getFinishComment() {
 		return finishComment;
 	}
@@ -1042,6 +1127,8 @@ public class ScoreSheet {
 	 * Get the beer body.
 	 * @return The body.
 	 */
+	@Column(name="beer_body")
+	@Enumerated(EnumType.STRING)
 	public BeerBody getBody() {
 		return body;
 	}
@@ -1058,6 +1145,7 @@ public class ScoreSheet {
 	 * Get whether the body was inappropriate.
 	 * @return True if the body was inappropriate; otherwise false.
 	 */
+	@Column(name="body_inappr")
 	public boolean getBodyInappropriate() {
 		return bodyInapp;
 	}
@@ -1074,6 +1162,8 @@ public class ScoreSheet {
 	 * Get the perceived creaminess level.
 	 * @return The creaminess level.
 	 */
+	@Column(name="cream_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getCreaminessLevel() {
 		return creamLevel;
 	}
@@ -1090,6 +1180,7 @@ public class ScoreSheet {
 	 * Get whether the creaminess was inappropriate.
 	 * @return True if the creaminess was inappropriate; otherwise false.
 	 */
+	@Column(name="cream_inappr")
 	public boolean getCreaminessInappropriate() {
 		return creamInapp;
 	}
@@ -1106,6 +1197,8 @@ public class ScoreSheet {
 	 * Get the perceived carbonation level.
 	 * @return The carbonation level.
 	 */
+	@Column(name="carb_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getCarbonationLevel() {
 		return carbLevel;
 	}
@@ -1122,6 +1215,7 @@ public class ScoreSheet {
 	 * Get whether the carbonation was inappropriate.
 	 * @return True if the carbonation was inappropriate; otherwise false.
 	 */
+	@Column(name="carb_inappr")
 	public boolean getCarbonationInappropriate() {
 		return carbInapp;
 	}
@@ -1138,6 +1232,8 @@ public class ScoreSheet {
 	 * Get the perceived astringency level.
 	 * @return The astringency level.
 	 */
+	@Column(name="astr_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getAstringencyLevel() {
 		return astrLevel;
 	}
@@ -1154,6 +1250,7 @@ public class ScoreSheet {
 	 * Get whether the astringency level was inappropriate.
 	 * @return True if the astringency level was inappropriate; otherwise false.
 	 */
+	@Column(name="astr_inappr")
 	public boolean getAstringencyInappropriate() {
 		return astrInapp;
 	}
@@ -1170,6 +1267,8 @@ public class ScoreSheet {
 	 * Get the perceived warmth level.
 	 * @return The warmth level.
 	 */
+	@Column(name="warmth_level")
+	@Enumerated(EnumType.STRING)
 	public IngrediantLevel getWarmthLevel() {
 		return warmthLevel;
 	}
@@ -1186,6 +1285,7 @@ public class ScoreSheet {
 	 * Get whether the warmth was inappropriate.
 	 * @return True if the warmth was inappropriate; otherwise false.
 	 */
+	@Column(name="warmth_inappr")
 	public boolean getWarmthInappropriate() {
 		return warmthInapp;
 	}
