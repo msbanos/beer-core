@@ -471,7 +471,7 @@ public class ScoreSheet {
 	 * Get the "mouthfeel - other" comment.
 	 * @return The "other" comment.
 	 */
-	@Column(name="other")
+	@Column(name="mf_other")
 	public String getMouthfeelOther() {
 		return mfOther;
 	}
@@ -905,7 +905,7 @@ public class ScoreSheet {
 	 * Get whether the hop flavor was inappropriate.
 	 * @return True if the flavor was inappropriate; otherwise false.
 	 */
-	@Column(name="hflav_inappr")
+	@Column(name="hflav_innappr")
 	public boolean getHopFlavorInappropriate() {
 		return hopFlavorInapp;
 	}
