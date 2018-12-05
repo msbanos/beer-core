@@ -18,6 +18,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import banos.ms.beer.session.BrewSession;
+
 /**
  * [Author]			Mike Banos
  * [Date]			10/13/2018
@@ -51,6 +53,24 @@ public class ScoreSheet {
 	 */
 	public void setId(final int id) {
 		this.id = id;
+	}
+	
+	/**
+	 * Get the corresponding brew session.
+	 * @return The session.
+	 */
+	@OneToOne
+	@JoinColumn(name="brew_session_id")
+	public BrewSession getSession() {
+		return session;
+	}
+	
+	/**
+	 * Set the corresponding brew session.
+	 * @param session The session.
+	 */
+	public void setSession(final BrewSession session) {
+		this.session = session;
 	}
 	
 	/**
@@ -1319,4 +1339,5 @@ public class ScoreSheet {
 	private FlavorBalance balance;
 	private BeerFinish finish;
 	private BeerBody body;
+	private BrewSession session;
 }
