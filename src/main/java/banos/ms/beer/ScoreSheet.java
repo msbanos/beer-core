@@ -957,7 +957,7 @@ public class ScoreSheet {
 	 * Get whether the bitterness flavor was inappropriate.
 	 * @return True if the flavor was inappropriate; otherwise false.
 	 */
-	@Column(name="bitflav_inappr")
+	@Column(name="bitflav_innappr")
 	public boolean getBitternessFlavorInappropriate() {
 		return bitFlavorInapp;
 	}
