@@ -3,6 +3,7 @@ package banos.ms.beer;
 import java.time.LocalDate;
 import java.util.Map;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -266,6 +267,8 @@ public class ScoreSheet {
 	 * @return The flaw mapping.
 	 */
 	@ElementCollection
+	@CollectionTable(name="ss_flaws", joinColumns=@JoinColumn(name="score_sheet_id"))
+	@Column(name="flaw_level")
 	@MapKeyColumn(name="flaw")
 	@MapKeyEnumerated(EnumType.STRING)
 	public Map<Flaw, FlawLevel> getFlaws() {
