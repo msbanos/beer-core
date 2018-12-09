@@ -7,4 +7,4 @@ package banos.ms.beer;
  * 		@link http://www.gnu.org/licenses/lgpl.html
  * [Summary]		The possible beer clarity descriptions.
  */
-public enum Clarity { BRILLIANT, HAZY, OPAQUE }
+public enum Clarity { BRILLIANT, BRILLIANT_HAZY, HAZY, OPAQUE_HAZY, OPAQUE }
