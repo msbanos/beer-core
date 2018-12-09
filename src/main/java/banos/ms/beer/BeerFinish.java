@@ -7,4 +7,4 @@ package banos.ms.beer;
  * 		@link http://www.gnu.org/licenses/lgpl.html
  * [Summary]		Beer finishes.
  */
-public enum BeerFinish { DRY, I, SWEET }
+public enum BeerFinish { DRY, DRY_INT, INT, SWEET_INT, SWEET }
