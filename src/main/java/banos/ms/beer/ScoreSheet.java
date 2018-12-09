@@ -492,7 +492,7 @@ public class ScoreSheet {
 	 * @return The style rating.
 	 */
 	@Column(name="style_overall")
-	public int getOverallStyle() {
+	public float getOverallStyle() {
 		return overallStyle;
 	}
 	
@@ -500,7 +500,7 @@ public class ScoreSheet {
 	 * Set the overall style rating (0="Classic Example" - 4="Not to Style").
 	 * @param style The style rating.
 	 */
-	public void setOverallStyle(final int style) {
+	public void setOverallStyle(final float style) {
 		this.overallStyle = style;
 	}
 	
@@ -509,7 +509,7 @@ public class ScoreSheet {
 	 * @return The impression rating.
 	 */
 	@Column(name="impr_overall")
-	public int getOverallImpression() {
+	public float getOverallImpression() {
 		return overallImpression;
 	}
 	
@@ -517,7 +517,7 @@ public class ScoreSheet {
 	 * Set the overall impression rating (0="Wonderful" - 4="Lifeless").
 	 * @param imp The impression rating.
 	 */
-	public void setOverallImpression(final int imp) {
+	public void setOverallImpression(final float imp) {
 		overallImpression = imp;
 	}
 	
@@ -1321,9 +1321,8 @@ public class ScoreSheet {
 		warmthInapp = inapp;
 	}
 	
-	private int id, flightPos, flightCount, consensus, total, aromaScore, appScore, flavorScore, mfScore, overallScore,
-		overallStyle, overallImpression;
-	private float overallFlaws;
+	private int id, flightPos, flightCount, consensus, total, aromaScore, appScore, flavorScore, mfScore, overallScore;
+	private float overallFlaws, overallStyle, overallImpression;
 	private Integer bosPlace;
 	private String compName, compLoc, bottleComment, feedback, aromaOther, appOther, appTexture, flavorOther, mfOther,
 		maltAromaComment, hopAromaComment, fermAromaComment, maltFlavorComment, hopFlavorComment, bitFlavorComment, 
