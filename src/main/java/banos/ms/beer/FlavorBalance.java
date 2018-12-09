@@ -7,4 +7,4 @@ package banos.ms.beer;
  * 		@link http://www.gnu.org/licenses/lgpl.html
  * [Summary]		The possible flavor balances.
  */
-public enum FlavorBalance { HOPPY, I, MALTY }
+public enum FlavorBalance { HOPPY, HOPPY_INT, INT, MALTY_INT, MALTY }
