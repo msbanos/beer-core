@@ -526,7 +526,7 @@ public class ScoreSheet {
 	 * @return The flaws rating.
 	 */
 	@Column(name="flaws_overall")
-	public int getOverallFlaws() {
+	public float getOverallFlaws() {
 		return overallFlaws;
 	}
 	
@@ -534,7 +534,7 @@ public class ScoreSheet {
 	 * Set the overall flaws rating (0="Flawless" - 4="Significant Flaws").
 	 * @param flaws The flaws rating.
 	 */
-	public void setOverallFlaws(final int flaws) {
+	public void setOverallFlaws(final float flaws) {
 		overallFlaws = flaws;
 	}
 	
@@ -1322,7 +1322,8 @@ public class ScoreSheet {
 	}
 	
 	private int id, flightPos, flightCount, consensus, total, aromaScore, appScore, flavorScore, mfScore, overallScore,
-		overallStyle, overallImpression, overallFlaws;
+		overallStyle, overallImpression;
+	private float overallFlaws;
 	private Integer bosPlace;
 	private String compName, compLoc, bottleComment, feedback, aromaOther, appOther, appTexture, flavorOther, mfOther,
 		maltAromaComment, hopAromaComment, fermAromaComment, maltFlavorComment, hopFlavorComment, bitFlavorComment, 
