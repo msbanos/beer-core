@@ -7,4 +7,4 @@ package banos.ms.beer;
  * 		@link http://www.gnu.org/licenses/lgpl.html
  * [Summary]		The possible beer bodies.
  */
-public enum BeerBody { THIN, MEDIUM, FULL }
+public enum BeerBody { THIN, THIN_MEDIUM, MEDIUM, FULL_MEDIUM, FULL }
