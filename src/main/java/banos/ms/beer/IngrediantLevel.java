@@ -7,4 +7,4 @@ package banos.ms.beer;
  * 		@link http://www.gnu.org/licenses/lgpl.html
  * [Summary]		The perceived ingrediant level.
  */
-public enum IngrediantLevel { NONE, LOW, MEDIUM, HIGH }
+public enum IngrediantLevel { NONE, LOW, MEDIUM_LOW, MEDIUM, MEDIUM_HIGH, HIGH }
